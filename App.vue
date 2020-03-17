@@ -1,4 +1,5 @@
 <script>
+  import {config} from "@/utils/config.js"
 	export default {
 		data(){
 			return {
@@ -24,17 +25,19 @@
         return new Promise((reslove,reject)=>{
           uni.login({
             success:(res)=> {
-              return this.request({
-                path:"/login/wxLogin",
+              uni.request({
+                url:`${config.apiHost}/login/wxLogin`,
                 data:{
                   code:res.code
                 },
-                method:"POST"
-              }).then(result=>{
+                method:"POST",
+                header:{},
+                success:(result)=>{
                   let token=result.token;
                   uni.setStorageSync("token",token);
                   this.globalData.userInfo={...result};
-              })
+                }
+              });
             }
           })
         })
