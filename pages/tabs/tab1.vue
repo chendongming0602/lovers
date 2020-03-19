@@ -31,7 +31,20 @@
 		methods:{
 			async pulldown(e){//刷新
 				let {stop}=e;
+        // this.request({
+        //   path:"/wx/is/liked",
+        //   method:"POST",
+        //   data:{
+        //     indexid:19,
+        //     is:1
+        //   }
+        // });
+        
+        this.request({
+          path:"/wx/index",
+        });
 				setTimeout(()=>{
+          
 					stop()//结束
 				},500)
 			},

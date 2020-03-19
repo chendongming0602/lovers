@@ -11,6 +11,7 @@
 			wx.cloud.init();
 			//#endif
       let users=await this.login();
+      
       console.log(users)
 		},
 		
@@ -26,16 +27,18 @@
           uni.login({
             success:(res)=> {
               uni.request({
-                url:`${config.apiHost}/login/wxLogin`,
+                url:`${config.apiHost}/wx/wxLogin`,
                 data:{
                   code:res.code
                 },
                 method:"POST",
                 header:{},
                 success:(result)=>{
-                  let token=result.token;
+                  let obj=result.data,
+                  token=obj.data.token;
                   uni.setStorageSync("token",token);
-                  this.globalData.userInfo={...result};
+                  this.globalData.userInfo={...obj.data};
+                  
                 }
               });
             }

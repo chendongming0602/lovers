@@ -29,6 +29,7 @@
 		},
 		created() {
       this.tabArr[this.tabCount]=true;
+    
 		},
 		methods: {
 			 tabs(e){//子组件触发
