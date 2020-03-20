@@ -32,11 +32,10 @@
 			async pulldown(e){//刷新
 				let {stop}=e;
 				this.request({
-				  path:"/wx/is/user",
-				  method:"POST",
+				  path:"/wx/class",
+          // method:"POST",
 				  data:{
-					indexid:20,
-					is:1
+					classid:1
 				  }
 				});
 		
